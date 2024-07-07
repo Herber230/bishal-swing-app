@@ -1,0 +1,5 @@
+#!/bin/sh
+
+git fetch --all -p
+pnpm exec lint-staged --relative
+pnpm run validate

@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "next",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "sort-imports": "error"
+  },
+  "env": {
+    "jest": true
+  }
+}
