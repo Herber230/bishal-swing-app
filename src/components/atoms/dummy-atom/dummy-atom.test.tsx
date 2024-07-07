@@ -7,7 +7,7 @@ describe('components:atoms:dummy-atom', () => {
   it('renders a heading', () => {
     render(<DummyAtom />);
 
-    const heading = screen.getByText('Dummy Atom Content');
+    const heading = screen.getByText('Dummy Atom Content - Bad test');
 
     expect(heading).toBeInTheDocument();
   });
