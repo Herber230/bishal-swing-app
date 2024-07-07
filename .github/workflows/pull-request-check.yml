@@ -1,0 +1,26 @@
+name: Pull Request Check
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - chore/pull-request-check
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch PR Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Environment Initialization
+        uses: ./.github/composite-actions/env-initialization
+
+      - name: Run Validation
+        run: |
+          pnpm run validate
