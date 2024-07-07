@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Img from 'next/image';
+
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -56,10 +58,17 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
+          <Img
+            src="/vercel.svg"
+            alt="Vercel"
+            className={styles.logo}
+            height={80}
+            width={300}
+          />
         </a>
       </footer>
 
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <style jsx>{`
         main {
           padding: 5rem 0;
@@ -104,6 +113,7 @@ export default function Home() {
         }
       `}</style>
 
+      {/* eslint-disable-next-line react/no-unknown-property */}
       <style jsx global>{`
         html,
         body {
