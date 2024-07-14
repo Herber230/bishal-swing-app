@@ -2,7 +2,6 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
-
 import type { Config } from 'jest';
 
 const config: Config = {
@@ -175,9 +174,9 @@ const config: Config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  // transform: {
-  //   '^.+\\.(ts|tsx)$': 'ts-jest',
-  // },
+  transform: {
+    '^.+\\.(t|j)sx?$': '@swc/jest',
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
