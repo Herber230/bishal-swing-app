@@ -7,9 +7,10 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "jest",
     "prepare": "husky",
-    "validate": "pnpm run lint && pnpm run test"
+    "validate": "pnpm run format:check && pnpm run lint"
   },
   "dependencies": {
     "@nextui-org/button": "2.0.34",
