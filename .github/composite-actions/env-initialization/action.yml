@@ -9,6 +9,10 @@ inputs:
     description: 'Version for PNPM'
     required: false
     default: '9.5.0'
+  allow-install:
+    description: 'Allow the CI command to install the dependencies'
+    required: false
+    default: 'true'
 
 runs:
   using: composite
@@ -32,11 +36,20 @@ runs:
 
     - name: Setup PNPM cache
       uses: actions/cache@v4
+      id: pnpm-cache
       with:
         path: ${{ env.STORE_PATH }}
         key: pnpm-store-${{ runner.os }}-node-${{ inputs.node-version }}-pnpm-${{ inputs.pnpm-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
 
+    - name: Setup NPM cache
+      id: npm-cache
+      uses: actions/cache@v4
+      with:
+        path: node_modules
+        key: node-modules-${{ runner.os }}-node-${{ inputs.node-version }}-pnpm-${{ inputs.pnpm-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+
     - name: Install dependencies
+      if: (steps.npm-cache.outputs.cache-hit != 'true' || steps.pnpm-cache.outputs.cache-hit != 'true') && inputs.allow-install == 'true'
       shell: bash
       run: |
         pnpm i --frozen-lockfile
