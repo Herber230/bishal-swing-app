@@ -1,10 +1,13 @@
-import { Button } from '@nextui-org/button';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
-export default function Page() {
-  return (
-    <div>
-      This is a button from the NextUI library:
-      <Button>Click me</Button>
-    </div>
-  );
+// TODO: Remove this page and implement the redirect in the middleware
+export default async function Page() {
+  const session = await auth();
+
+  if (session?.user) {
+    redirect('/home');
+  } else {
+    redirect('/login');
+  }
 }

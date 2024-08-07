@@ -14,12 +14,21 @@
   },
   "dependencies": {
     "@nextui-org/button": "2.0.34",
+    "@nextui-org/divider": "2.0.29",
+    "@nextui-org/input": "2.2.3",
+    "@nextui-org/link": "2.0.33",
     "@nextui-org/system": "2.2.2",
     "@nextui-org/theme": "2.2.6",
+    "auth": "1.1.1",
+    "effect": "3.5.9",
     "framer-motion": "11.3.2",
+    "mongodb": "6.8.0",
     "next": "14.2.4",
+    "next-auth": "5.0.0-beta.19",
+    "rambda": "9.2.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "5.2.1"
   },
   "engines": {
     "node": "22.4.0",
