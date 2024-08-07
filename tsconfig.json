@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
@@ -16,7 +17,17 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "@/auth": ["./src/context/auth"],
+      "@/entities/*": ["./src/business/entities/*"],
+      "@/repositories/*": ["./src/business/repositories/*"],
+      "@/use-cases/*": ["./src/business/use-cases/*"],
+      "@/components/*": ["./src/implementation/components/*"],
+      "@/impl-mongodb/*": ["./src/implementation/mongodb/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/server-context/*": ["./src/context/server/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

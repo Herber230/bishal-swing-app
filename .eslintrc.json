@@ -7,9 +7,6 @@
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended"
   ],
-  "rules": {
-    "sort-imports": "error"
-  },
   "env": {
     "jest": true
   }
