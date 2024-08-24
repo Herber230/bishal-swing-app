@@ -86,6 +86,45 @@ The most complicated thing about the local environment is to set the GitHub auth
 
 > **NOTE** This section can be improved with more detailed information about the installation and the configuration of Git and GitHub. Collaborators can add more information about this topic.
 
+#### SSH key for GitHub authentication
+
+Open Git Bash
+
+Check for an existing SSH key:
+
+```bash
+ls -al ~/.ssh
+```
+
+Look for files named id_rsa and id_rsa.pub. If they exist, you already have an SSH key.
+Generate a new SSH key (if you don’t have one):
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "youremail@gmail.com"
+```
+
+Follow the prompts to save the key in the default location.
+Add your SSH key to the ssh-agent:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+```
+
+Add the SSH key to your GitHub account:
+Copy the SSH key to your clipboard:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+Go to GitHub, navigate to Settings > SSH and GPG keys, and click New SSH key. Paste your key there.
+Test your SSH connection:
+
+```bash
+ssh -T git@github.com
+```
+
 ### PNPM
 
 PNPM is a tool that requires the previous installation of Node.js. It is a package manager that allows to install the dependencies of the project. This is a very powerful tool that provides a lot of features out of the box, like installing the dependencies, updating the dependencies, and more.
