@@ -9,5 +9,8 @@
   ],
   "env": {
     "jest": true
+  },
+  "rules": {
+    "no-undef": "off"
   }
 }

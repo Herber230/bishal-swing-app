@@ -1,6 +1,6 @@
 import Credentials from 'next-auth/providers/credentials';
 import Google from 'next-auth/providers/google';
-import NextAuth, { User as NextAuthUser } from 'next-auth';
+import NextAuth, { User } from 'next-auth';
 import { findUserByAccountInMongo } from '@/impl-mongodb/adapters/find-user-by-account';
 import { signInWithCredentialsUC } from '@/use-cases/sign-in-with-with-credentials';
 import { Effect } from 'effect';
@@ -26,10 +26,8 @@ const bishalSwingCredentials = Credentials({
       },
     );
 
-    // TODO: Read the error types from the use-case and handle them
-    // Also override the User and Session Types
-    const userResult = await Effect.runPromise(signInWithMongoCredentials);
-    return userResult ? (userResult as NextAuthUser) : null;
+    const user = await Effect.runPromise(signInWithMongoCredentials);
+    return user as User;
   },
 });
 

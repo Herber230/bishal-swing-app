@@ -28,7 +28,8 @@
     "rambda": "9.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "5.2.1"
+    "react-icons": "5.2.1",
+    "zod": "3.23.8"
   },
   "engines": {
     "node": "22.4.0",
@@ -43,6 +44,7 @@
     "@testing-library/react": "16.0.0",
     "@types/jest": "29.5.12",
     "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.19",
     "eslint": "8",
     "eslint-config-next": "14.2.4",
