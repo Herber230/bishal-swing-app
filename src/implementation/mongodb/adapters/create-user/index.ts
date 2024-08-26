@@ -1,1 +1,1 @@
-export * from './create-user-thru-mongoose';
+export * from './create-user-in-mongo';

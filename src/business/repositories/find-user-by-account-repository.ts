@@ -12,7 +12,6 @@ export interface FindUserByAccountRepositoryParams {
   details?: UserAccountDetails;
 }
 
-//TODO: Possibly type a base error for specific implementations
 export interface FindUserByAccountRepository {
   (
     // TODO: Solve eslint false positive

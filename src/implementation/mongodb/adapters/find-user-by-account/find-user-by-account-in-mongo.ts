@@ -54,7 +54,6 @@ const findDocument = (params: FindUserByAccountRepositoryParams) =>
 
 const parseDocument = Effect.flatMap((docResult: WithId<Document> | null) => {
   const user = docResult ? userFromDocument(docResult) : undefined;
-
   return Effect.succeed(user);
 });
 
