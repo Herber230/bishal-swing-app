@@ -80,17 +80,15 @@ git --version
 
 And you should see the version of Git installed in your local machine. This version is not a restriction itself, it means all in the team can have a different version for this.
 
-The most complicated thing about the local environment is to set the GitHub authentication, we need to let GitHub know who we are and this setting depends on the Operating System. This can be done using SSH key authentication. This can be done following the instructions in the
-
-[Official GitHub documentation for SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
-
-> **NOTE** This section can be improved with more detailed information about the installation and the configuration of Git and GitHub. Collaborators can add more information about this topic.
-
 #### SSH key for GitHub authentication
 
-Open Git Bash
+The most complicated thing about the local environment is to set the GitHub authentication, we need to let GitHub know who we are and this setting depends on the Operating System. This can be done using SSH key authentication. This can be done following the instructions in the [Official GitHub documentation for SSH](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 
-Check for an existing SSH key:
+Also here is a brief guide to set the SSH key in the local machine:
+
+> **Note for Windows** If you are using Windows, you need to use the Git Bash for the following commands, this was already installed if you used the common git install wizard. The Git Bash is similar to the terminal you already used, but allows to run some extra commands that are not available in the Command Prompt or PowerShell.
+
+So using the common terminal on MacOS/Linux or the Git Bash on windows you can follow the next steps:
 
 ```bash
 ls -al ~/.ssh
@@ -155,6 +153,33 @@ You can install Visual Studio Code using the following link:
 
 Visual Studio Code provide a cool feature that is the integration with the terminal. This means that you can open the terminal inside Visual Studio Code and run the commands directly from the editor. This is a very powerful feature that allows to work with the code and the terminal in the same place.
 
+### Execution Policy
+
+> (Configuration for Windows only)
+
+The execution policy is a security feature in Windows that determines whether scripts can be run in the local machine. This is a security feature that can be configured to allow or disallow the execution of scripts. This is important because the development environment uses scripts to run the project, so it is necessary to allow the execution of scripts.
+
+To set the execution policy you need to open the terminal but with administrator privileges. This can be done using the following steps:
+
+1. Open the start menu.
+2. Search for the terminal.
+3. Right-click on the terminal.
+4. Click on the option "Run as administrator".
+
+Then you can set the execution policy as unrestricted using the following command:
+
+```bash
+Set-ExecutionPolicy Unrestricted
+```
+
+And you can verify the execution policy using the following command:
+
+```bash
+Get-ExecutionPolicy
+```
+
+The output should be `Unrestricted`.
+
 ---
 
 ## Installation
@@ -181,19 +206,28 @@ git clone git@github.com:Herber230/bishal-swing-app.git
 cd bishal-swing-app
 ```
 
-3. Install the dependencies. This will download the dependencies of the project to the local machine, and a `node_modules` folder will be created in the project directory. For more information about the dependencies, you can check the **[KNOWLEDGE_BASE](./KNOWLEDGE_BASE.md)** section of these documents.
+3. It is necessary to configure the git user and email in the local machine. This is important because the commits made in the project will have the user and email configured in the local machine. This can be done using the following commands:
+
+```bash
+git config user.name "Your Name"
+git config user.email "youremail@example.com"
+```
+
+4. This application uses some private values that are used to connect to some web services. These values are stored in a `.env` file that is not included in the repository. This file is necessary to run the project in the local machine. This file can be requested to the project owner. You can check more information about this checking the `.env.example` file in the root of the project.
+
+5. Install the dependencies. This will download the dependencies of the project to the local machine, and a `node_modules` folder will be created in the project directory. For more information about the dependencies, you can check the **[KNOWLEDGE_BASE](./KNOWLEDGE_BASE.md)** section of these documents.
 
 ```bash
 pnpm install
 ```
 
-4. Run the development server. This will start the development server and the project will be available in the browser. For more information about the development server, you can check the **[KNOWLEDGE_BASE](./KNOWLEDGE_BASE.md)** section of these documents.
+6. Run the development server. This will start the development server and the project will be available in the browser. For more information about the development server, you can check the **[KNOWLEDGE_BASE](./KNOWLEDGE_BASE.md)** section of these documents.
 
 ```bash
 pnpm run dev
 ```
 
-5. Open the browser and navigate to the following URL:
+7. Open the browser and navigate to the following URL:
 
 ```
 http://localhost:3000
