@@ -1,21 +1,34 @@
+import { Context, Effect } from 'effect';
 import type { User } from '@/entities/user';
 import type {
   UserAccountDetails,
   UserAccountType,
 } from '@/entities/user-account';
-import { Effect } from 'effect';
+import {
+  ImplementationError,
+  MissingImplementationConfigError,
+} from './errors/base-errors';
+import { ImplementationConfigTag } from './implementation-config-repository';
 
-export interface FindUserByAccountRepositoryParams {
+export interface FindUserByAccountParams {
   userName?: string;
   type?: UserAccountType;
   identifier?: string;
   details?: UserAccountDetails;
 }
 
-export interface FindUserByAccountRepository {
+export interface FindUserByAccount {
   (
-    // TODO: Solve eslint false positive
     // eslint-disable-next-line no-unused-vars
-    params: FindUserByAccountRepositoryParams,
-  ): Effect.Effect<User | undefined, unknown>;
+    params: FindUserByAccountParams,
+  ): Effect.Effect<
+    User | undefined,
+    ImplementationError | MissingImplementationConfigError,
+    ImplementationConfigTag
+  >;
 }
+
+export class FindUserByAccountTag extends Context.Tag('FindUserByAccountTag')<
+  FindUserByAccountTag,
+  FindUserByAccount
+>() {}

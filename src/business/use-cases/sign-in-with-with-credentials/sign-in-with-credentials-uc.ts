@@ -1,37 +1,61 @@
 import { Effect } from 'effect';
-import { FindUserByAccountRepositoryParams } from '@/repositories/find-user-by-account-repository';
-import { isValidEmail } from '@/utils/string/is-valid-email';
 import { User } from '@/entities/user';
 import {
-  SignInWithCredentialsRepository,
-  UserNotFoundError,
-} from '@/repositories/sign-in-with-crecentials-repository';
+  SignInWithCredentialsInput,
+  SignInWithCredentialsInputTag,
+} from '@/repositories/sign-in-with-credentials-repository';
+import {
+  FindUserByAccountParams,
+  FindUserByAccountTag,
+} from '@/repositories/find-user-by-account-repository';
+import {
+  AccountNotFoundError,
+  AccountNotVerifiedError,
+} from '@/repositories/errors/user-account-errors';
+import { CommonBusinessUtilsTag } from '@/repositories/common-business-repository';
 
-export const signInWithCredentialsUC = Effect.gen(function* () {
-  const provider = yield* SignInWithCredentialsRepository;
-  const {
-    find: findUser,
-    input: { emailOrUserName, password },
-  } = provider;
-
-  let parameters: FindUserByAccountRepositoryParams = {
-    type: 'email',
-    details: {
-      password,
-    },
+const getParameters = (
+  input: SignInWithCredentialsInput,
+): FindUserByAccountParams => {
+  const details = {
+    password: input.password,
   };
 
-  if (isValidEmail(emailOrUserName)) {
-    parameters.identifier = emailOrUserName;
-  } else {
-    parameters.userName = emailOrUserName;
-  }
+  if ('email' in input)
+    return {
+      type: 'email',
+      identifier: input.email,
+      details,
+    };
 
-  const userResult = yield* findUser(parameters);
+  if ('phone' in input)
+    return {
+      type: 'phone',
+      identifier: input.phone,
+      details,
+    };
 
-  if (!userResult) {
-    yield* Effect.fail(new UserNotFoundError());
-  }
+  return {
+    userName: input.userName,
+    details,
+  };
+};
 
-  return userResult as User;
+export const signInWithCredentialsUC = Effect.gen(function* () {
+  const input = yield* SignInWithCredentialsInputTag;
+  const findUser = yield* FindUserByAccountTag;
+  const businessUtils = yield* CommonBusinessUtilsTag;
+
+  const searchParams = getParameters({
+    ...input,
+    password: yield* businessUtils.hash(input.password, 'hard'),
+  });
+  const possibleUser = yield* findUser(searchParams);
+  if (!possibleUser) yield* Effect.fail(new AccountNotFoundError());
+  const user = possibleUser as User;
+
+  const isActive = user.accounts.some(acc => acc.verified);
+  if (!isActive) yield* Effect.fail(new AccountNotVerifiedError());
+
+  return user;
 });

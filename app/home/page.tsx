@@ -17,7 +17,7 @@ export default async function Page() {
   const session = await auth();
 
   if (!session?.user) {
-    redirect('/sign-in');
+    redirect('/auth/sign-in');
   }
 
   return (

@@ -2,6 +2,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
+import { LayoutClient } from './layout-client';
 
 export const metadata: Metadata = {
   title: 'Bishal Swing',
@@ -11,7 +12,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html>
-      <body>{children}</body>
+      <body>
+        <LayoutClient />
+        {children}
+      </body>
     </html>
   );
 }
