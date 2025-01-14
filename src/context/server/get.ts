@@ -2,12 +2,12 @@
 /* eslint-disable no-undef */
 import type { ServerContext } from './server-context.types';
 
-export default function getServerContext<T>(caller: T): ServerContext {
+export default function getServerContext(): ServerContext {
   // @ts-ignore
-  if (!globalThis.initializeServerContext) {
+  if (!globalThis.getServerContextInstance) {
     throw new Error('Server context is not initialized yet');
   }
 
   // @ts-ignore
-  return globalThis.initializeServerContext(caller);
+  return globalThis.getServerContextInstance();
 }

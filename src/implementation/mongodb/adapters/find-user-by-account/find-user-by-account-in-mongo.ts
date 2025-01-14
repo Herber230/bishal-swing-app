@@ -1,20 +1,18 @@
-import { Document, WithId } from 'mongodb';
-import { Effect, pipe } from 'effect';
-import {
-  FindUserByAccountRepository,
-  FindUserByAccountRepositoryParams,
-} from '@/repositories/find-user-by-account-repository';
+import { Effect } from 'effect';
+import { FindUserByAccountParams } from '@/repositories/find-user-by-account-repository';
 import getServerContext from '@/server-context/get';
 import { ReadError } from '@/impl-mongodb/errors';
-import { ServerContext } from '@/server-context/server-context.types';
 import { userFromDocument } from '@/impl-mongodb/parsers/user-from-document';
+import { BISHAL_USERS } from '@/impl-mongodb/constants/collections';
+import { ImplementationConfigTag } from '@/repositories/implementation-config-repository';
+import { MissingImplementationConfigError } from '@/repositories/errors/base-errors';
 
 const createFilters = ({
   type,
   identifier,
   userName,
   details,
-}: FindUserByAccountRepositoryParams) => {
+}: FindUserByAccountParams) => {
   const filters: Record<string, any> = {};
   let elemMatch: Record<string, any> | undefined;
 
@@ -37,26 +35,20 @@ const createFilters = ({
   return filters;
 };
 
-const findDocument = (params: FindUserByAccountRepositoryParams) =>
-  Effect.tryPromise({
-    try: () => {
-      const serverContext: ServerContext = getServerContext(
-        findUserByAccountInMongo,
-      );
-      const client = serverContext.mongoConnection.getClient();
-      //TODO: Specify the database as default in some configuration or as part of the server context
-      const db = client.db('bishal-swing-app-dev');
+export const findUserByAccountInMongo = (params: FindUserByAccountParams) =>
+  Effect.gen(function* () {
+    const implementationConfig = yield* ImplementationConfigTag;
+    const database = implementationConfig['database'];
 
-      return db.collection('bishal_users').findOne(createFilters(params));
-    },
-    catch: e => new ReadError(e),
+    if (!database)
+      yield* Effect.fail(new MissingImplementationConfigError('database'));
+
+    const db = getServerContext().mongoConnection.getClient().db(database);
+
+    const userDocument = yield* Effect.tryPromise({
+      try: () => db.collection(BISHAL_USERS).findOne(createFilters(params)),
+      catch: e => new ReadError(e),
+    });
+
+    return userDocument ? userFromDocument(userDocument) : undefined;
   });
-
-const parseDocument = Effect.flatMap((docResult: WithId<Document> | null) => {
-  const user = docResult ? userFromDocument(docResult) : undefined;
-  return Effect.succeed(user);
-});
-
-export const findUserByAccountInMongo: FindUserByAccountRepository = (
-  params: FindUserByAccountRepositoryParams,
-) => pipe(findDocument(params), parseDocument);

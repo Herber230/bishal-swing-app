@@ -1,5 +1,4 @@
 import type { ServerAction } from '@/utils/next/types';
-import type { ReactNode } from 'react';
 
 export const AUTHENTICATION_STATES = [
   'signIn',
@@ -14,10 +13,4 @@ export interface AuthenticationProps {
   state: AuthenticationState;
   className?: string;
   serverAction: ServerAction;
-  children?: ReactNode;
-}
-
-export interface AuthenticationClientFormProps {
-  serverAction: ServerAction;
-  state: AuthenticationState;
 }

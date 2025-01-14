@@ -5,4 +5,7 @@ export interface User {
   id: EntityId;
   name: string;
   accounts: Array<UserAccount>;
+  firstName: string;
+  lastName: string;
+  profilePictureUrl?: string;
 }

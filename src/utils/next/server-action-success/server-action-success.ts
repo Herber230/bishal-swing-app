@@ -1,8 +1,9 @@
 import { ServerActionResult } from '../types';
 
-export function serverActionSuccess(): ServerActionResult {
+export function serverActionSuccess(message: string): ServerActionResult {
   return {
     success: true,
+    message,
     errors: {},
   };
 }

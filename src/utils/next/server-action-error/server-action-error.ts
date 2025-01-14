@@ -1,10 +1,17 @@
 import { ServerActionResult } from '../types';
 
 export function serverActionError(
-  errors?: Record<string, string[]>,
+  message: string,
+  errors?: Record<string, string[] | undefined>,
 ): ServerActionResult {
+  const sanitizedErrors: Record<string, string[]> = {};
+  Object.entries(errors ?? {}).forEach(([key, value]) => {
+    if (value) sanitizedErrors[key] = value;
+  });
+
   return {
     success: false,
-    errors: errors ?? {},
+    message,
+    errors: sanitizedErrors,
   };
 }
