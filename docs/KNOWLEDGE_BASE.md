@@ -25,6 +25,7 @@ You can navigate through the document using the table of contents.
   - [React](#react)
   - [Next.js](#nextjs)
   - [Tailwind CSS](#tailwind-css)
+  - [Effect.js](#effectjs)
 - [Tools](#tools)
   - [Command Line Interface (CLI)](#command-line-interface-cli)
   - [Visual Studio Code](#visual-studio-code)
@@ -168,6 +169,24 @@ Next.js provides features like server-side rendering, static site generation, an
 ### Tailwind CSS
 
 Tailwind CSS is a utility-first CSS framework for rapidly building custom designs. Tailwind CSS is different from other CSS frameworks like Bootstrap and Foundation, because it is not opinionated. This means that Tailwind CSS does not provide pre-designed components like buttons and cards, instead it provides utility classes that you can use to style your own components.
+
+### Effect.js
+
+<https://effect.website/docs>
+
+Effect is a powerful TypeScript library designed to help developers easily create complex, synchronous, and asynchronous programs.
+
+Basically, Effect is a functional programming library that provides a set of tools to help you write better code. Effect is designed to be easy to use, flexible, and scalable. It provides a set of features that help you write code that is highly maintainable, readable, and flexible.
+
+Some of the main Effect features include:
+
+- **Concurrency:** Achieve highly-scalable, ultra low-latency applications through Effect’s fiber-based concurrency model.
+- **Composability:** Construct highly maintainable, readable, and flexible software through the use of small, reusable building blocks.
+  Resource Safety:\*\* Safely manage acquisition and release of resources, even when your program fails.
+- **Type Safety:** Leverage the TypeScript type system to the fullest with Effect’s focus on type inference and type safety.
+- **Error Handling:** Handle errors in a structured and reliable manner using Effect’s built-in error handling capabilities.
+- **Asynchronicity:** Write code that looks the same, whether it is synchronous or asynchronous.
+- **Observability:** With full tracing capabilities, you can easily debug and monitor the execution of your Effect program.
 
 ---
 
