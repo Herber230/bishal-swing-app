@@ -10,7 +10,7 @@ import { ImplementationConfigTag } from '@/repositories/implementation-config-re
 import { envConfig } from '../server/env-config';
 import { FindUserByAccountTag } from '@/repositories/find-user-by-account-repository';
 import { CommonBusinessUtilsTag } from '@/repositories/common-business-repository';
-import { commonBusiness } from '@/impl-common-business';
+import { commonBusiness } from '@/impl-common/business-utils';
 import { AuthError, User } from 'next-auth';
 
 export class BSCredentialsProviderError extends AuthError {

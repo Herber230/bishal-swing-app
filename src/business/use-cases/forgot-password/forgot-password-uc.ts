@@ -43,14 +43,19 @@ export const forgotPasswordUC = Effect.gen(function* () {
   const businessUtils = yield* CommonBusinessUtilsTag;
   const notifyAuthEvent = yield* NotifyAuthenticationEventTag;
 
-  const searchParams = getParameters(input);
-  const possibleUser = yield* findUser(searchParams);
+  // Find user by account using the common parameters composition
+  const possibleUser = yield* findUser(getParameters(input));
   if (!possibleUser) yield* Effect.fail(new AccountNotFoundError());
   const user = possibleUser as User;
 
-  const isActive = user.accounts.some(acc => acc.verified);
-  if (!isActive) yield* Effect.fail(new AccountNotVerifiedError());
+  // Check if the user has a verified phone account
+  const phoneAccount = user.accounts.find(acc => acc.type === 'phone');
+  if (!phoneAccount) yield* Effect.fail(new AccountNotFoundError());
+  if (!phoneAccount?.verified)
+    yield* Effect.fail(new AccountNotVerifiedError());
+  const phoneNumber = phoneAccount?.identifier as string;
 
+  // Generate a token and create an authentication event
   const token = `${yield* businessUtils.hash(user.name, 'soft')}-${yield* businessUtils.getUuid()}`;
   const authEvent = yield* createAuthEvent({
     userId: user.id,
@@ -58,6 +63,7 @@ export const forgotPasswordUC = Effect.gen(function* () {
     type: 'resetPasswordRequest',
     data: {
       token,
+      phoneNumber,
     },
   });
 
