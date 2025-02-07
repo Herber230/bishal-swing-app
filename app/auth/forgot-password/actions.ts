@@ -9,7 +9,7 @@ import {
   ForgotPasswordRepositoryInput,
   ForgotPasswordRepositoryInputTag,
 } from '@/repositories/forgot-password-repository';
-import { forgotPasswordUC } from '@/use-cases/forgot-passowrd';
+import { forgotPasswordUC } from '@/use-cases/forgot-password';
 import { ImplementationConfigTag } from '@/repositories/implementation-config-repository';
 import { envConfig } from '@/server-context/env-config';
 import { formDataToPlainObject } from '@/utils/form/form-data-to-plain-object';
@@ -18,7 +18,7 @@ import { findUserByAccountInMongo } from '@/impl-mongodb/adapters/find-user-by-a
 import { CreateAuthenticationEventTag } from '@/repositories/create-authentication-event-repository';
 import { createAuthEventInMongo } from '@/impl-mongodb/adapters/create-auth-event';
 import { CommonBusinessUtilsTag } from '@/repositories/common-business-repository';
-import { commonBusiness } from '@/impl-common-business';
+import { commonBusiness } from '@/impl-common/business-utils';
 import { NotifyAuthenticationEventTag } from '@/repositories/notify-authentication-event';
 import { notifyAuthEventThroughWhatsapp } from '@/impl-whatsapp-api/adapters/notify-auth-event';
 
@@ -60,6 +60,8 @@ const composedUseCase = (params: ForgotPasswordRepositoryInput) =>
     )
     .pipe(
       Effect.catchSome(error => {
+        console.log('[X] error: ', error);
+
         switch (error._tag) {
           case 'AccountNotFoundError':
             return Option.some(
