@@ -1,5 +1,5 @@
 import { Input } from '@nextui-org/input';
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import InputMask from 'react-input-mask';
 import { Label } from '@/components/atoms/label';
 import { ErrorLabel } from '@/components/atoms/error-label';

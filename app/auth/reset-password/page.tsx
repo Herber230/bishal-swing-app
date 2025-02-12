@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 import { verifyForgotPasswordTokenFromServer } from './actions';
 import { AuthenticationWithResetPasswordContext } from './client';
 
-export default async function Page({ searchParams }: PageProps) {
+export default async function Page(props: PageProps) {
+  const searchParams = await props.searchParams;
   const session = await auth();
   if (session?.user) redirect('/home');
 

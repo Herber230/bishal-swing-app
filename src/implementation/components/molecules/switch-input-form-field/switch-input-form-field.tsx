@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { Switch } from '@nextui-org/switch';
 import { ErrorLabel } from '@/components/atoms/error-label';
 import { FormFieldWrap } from '@/components/atoms/form-field-wrap';

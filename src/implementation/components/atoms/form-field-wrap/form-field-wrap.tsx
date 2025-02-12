@@ -1,5 +1,7 @@
 import type { FormFieldWrapProps } from './form-field-wrap.types';
 
+import type { JSX } from "react";
+
 export function FormFieldWrap({
   children,
   className = 'mb-2',

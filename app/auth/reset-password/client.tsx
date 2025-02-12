@@ -1,7 +1,8 @@
 'use client';
-
 import { Authentication } from '@/components/organisms/authentication';
 import { resetPasswordFromServer } from './actions';
+
+import type { JSX } from 'react';
 
 export interface AuthenticationWithResetPasswordContextProps {
   token: string;
