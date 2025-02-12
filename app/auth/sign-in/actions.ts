@@ -5,7 +5,6 @@ import { signIn, BSCredentialsProviderError } from '@/auth';
 import { serverActionError } from '@/utils/next/server-action-error';
 import { formDataToPlainObject } from '@/utils/form/form-data-to-plain-object';
 import { serverActionSuccess } from '@/utils/next/server-action-success';
-import { isRedirectError } from 'next/dist/client/components/redirect';
 
 const validateForm = (formData: FormData) => {
   const usePhone = formData.get('usePhone') === 'on';
@@ -42,12 +41,14 @@ export async function performSignInFromServer(_: unknown, formData: FormData) {
     );
 
   // It is necessary to use ths try-catch block to handle the error since
-  // it is the way auth.js interacts with the server
+  // it is the way auth.js interacts with the server, throwing errors
   try {
     await signIn('credentials', formData);
     return serverActionSuccess('Log In successful');
   } catch (e) {
-    if (isRedirectError(e)) throw e;
+    // This is an special case, we need to throw it to push the state to next router
+    // Probably a better way to check the error type. But it is the only way so far
+    if (e instanceof Error && e.message === 'NEXT_REDIRECT') throw e;
 
     return serverActionError('Log In failed', {
       submit: [
