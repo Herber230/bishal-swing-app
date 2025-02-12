@@ -130,7 +130,7 @@ PNPM is a tool that requires the previous installation of Node.js. It is a packa
 In the same way as Node.js, PNPM requires an strict version to work with. This can be done using the following command:
 
 ```bash
-npm install -g pnpm@9.5.0
+npm install -g pnpm@10.3.0
 ```
 
 Then you can verify the PNPM version using the following command:

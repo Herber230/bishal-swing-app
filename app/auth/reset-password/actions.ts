@@ -1,6 +1,6 @@
 'use server';
 
-import { commonBusiness } from '@/impl-common-business';
+import { commonBusiness } from '@/impl-common/business-utils';
 import { findAuthEventInMongo } from '@/impl-mongodb/adapters/find-auth-event';
 import { findUserInMongo } from '@/impl-mongodb/adapters/find-user';
 import { updateUserInMongo } from '@/impl-mongodb/adapters/update-user';
