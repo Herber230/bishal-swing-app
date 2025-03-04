@@ -1,6 +1,7 @@
 import { VerifyToken } from './client';
 
-export default function Page({ searchParams }: PageProps) {
+export default async function Page(props: PageProps) {
+  const searchParams = await props.searchParams;
   const token = searchParams['token'];
   if (!token)
     return (

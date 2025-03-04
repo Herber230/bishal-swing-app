@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, type JSX } from 'react';
 import { showToast } from '@/utils/ui/toast';
 import { useRouter } from 'next/navigation';
 import { performVerificationFromServer } from './actions';

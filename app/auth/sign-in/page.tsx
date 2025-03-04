@@ -1,8 +1,8 @@
 import { Authentication } from '@/components/organisms/authentication';
 import { auth } from '@/auth';
 import { redirect } from 'next/navigation';
-import { Divider } from '@nextui-org/divider';
-import { Link } from '@nextui-org/link';
+import { Divider } from '@heroui/divider';
+import { Link } from '@heroui/link';
 import { SignInWithFacebook } from '@/components/atoms/sign-in-with-facebook';
 import { SignInWithGoogle } from '@/components/atoms/sign-in-with-google';
 

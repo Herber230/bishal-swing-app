@@ -1,7 +1,7 @@
 import { auth, signOut } from '@/auth';
 import { redirect } from 'next/navigation';
-import { Button } from '@nextui-org/button';
-import { Divider } from '@nextui-org/divider';
+import { Button } from '@heroui/button';
+import { Divider } from '@heroui/divider';
 import Image from 'next/image';
 
 const placeHolders = [

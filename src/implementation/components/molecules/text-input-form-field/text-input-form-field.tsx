@@ -1,4 +1,4 @@
-import { Input } from '@nextui-org/input';
+import { Input } from '@heroui/input';
 import { Label } from '@/components/atoms/label';
 import { ErrorLabel } from '@/components/atoms/error-label';
 import { FormFieldWrap } from '@/components/atoms/form-field-wrap';

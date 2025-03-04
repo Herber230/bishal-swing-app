@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useFormState } from 'react-dom';
+import { useEffect, useState, useActionState } from 'react';
 import { toast } from 'react-toastify';
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import { ErrorLabel } from '@/components/atoms/error-label';
 import { PhoneInputFormField } from '@/components/molecules/phone-input-fom-field';
 import { TextInputFormField } from '@/components/molecules/text-input-form-field';
@@ -64,7 +63,7 @@ const successRedirect = {
 };
 
 export function Authentication({ serverAction, state }: AuthenticationProps) {
-  const [formState, formAction] = useFormState(serverAction, initialState);
+  const [formState, formAction] = useActionState(serverAction, initialState);
   const [usingPhone, setUsingPhone] = useState(false);
   const router = useRouter();
 
