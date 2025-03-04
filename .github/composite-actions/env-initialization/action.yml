@@ -4,11 +4,11 @@ inputs:
   node-version:
     description: 'Version for NodeJS'
     required: false
-    default: '22.4.0'
+    default: '23.7.0'
   pnpm-version:
     description: 'Version for PNPM'
     required: false
-    default: '9.5.0'
+    default: '10.3.0'
   allow-install:
     description: 'Allow the CI command to install the dependencies'
     required: false

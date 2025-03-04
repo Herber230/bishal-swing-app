@@ -25,6 +25,7 @@ You can navigate through the document using the table of contents.
   - [React](#react)
   - [Next.js](#nextjs)
   - [Tailwind CSS](#tailwind-css)
+  - [HeroUI](#heroui)
   - [Effect.js](#effectjs)
 - [Tools](#tools)
   - [Command Line Interface (CLI)](#command-line-interface-cli)
@@ -169,6 +170,14 @@ Next.js provides features like server-side rendering, static site generation, an
 ### Tailwind CSS
 
 Tailwind CSS is a utility-first CSS framework for rapidly building custom designs. Tailwind CSS is different from other CSS frameworks like Bootstrap and Foundation, because it is not opinionated. This means that Tailwind CSS does not provide pre-designed components like buttons and cards, instead it provides utility classes that you can use to style your own components.
+
+### HeroUI
+
+<https://www.heroui.com/>
+
+HeroUI is a set of components and utilities that are built on top of Tailwind CSS. HeroUI provides pre-designed components like buttons, cards, and modals, as well as utilities like spacing and typography. HeroUI is designed to work with Tailwind CSS, so you can use both frameworks together to build custom designs.
+
+It has a CLI to manage the components and utilities, and it is designed to be easy to use and flexible. HeroUI provides a set of features that help you build web applications faster and more efficiently.
 
 ### Effect.js
 

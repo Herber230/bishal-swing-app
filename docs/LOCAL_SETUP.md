@@ -47,13 +47,13 @@ And you should see the version of NVM installed in your local machine. This vers
 After this you can install Node.js using NVM. To do this you can run the following command:
 
 ```bash
-nvm install 22.4.0
+nvm install 23.7.0
 ```
 
 Then you must to set the Node.js version to be used in the local machine. This can be done using the following command:
 
 ```bash
-nvm use 22.4.0
+nvm use 23.7.0
 ```
 
 Finally you can verify the Node.js version using the following command:
@@ -187,9 +187,9 @@ The output should be `Unrestricted`.
 The following list can be checked to verify the requirements are installed in the local machine:
 
 - [x] Terminal
-- [x] Node.js version 22.4.0
+- [x] Node.js version 23.7.0
 - [x] Git installed and configured with SSH key authentication to GitHub
-- [x] PNPM version 9.5.0
+- [x] PNPM version 10.3.0
 - [x] Visual Studio Code
 
 Using the terminal, the following steps can be followed to install the project in the local machine:
