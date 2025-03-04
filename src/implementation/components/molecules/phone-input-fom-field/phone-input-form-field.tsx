@@ -1,4 +1,4 @@
-import { Input } from '@nextui-org/input';
+import { Input } from '@heroui/input';
 import { useState, type JSX } from 'react';
 import InputMask from 'react-input-mask';
 import { Label } from '@/components/atoms/label';

@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import { FaGoogle } from 'react-icons/fa';
 import { SignInWithGoogleProps } from './sign-in-with-google.types';
 import { signIn } from '@/auth';

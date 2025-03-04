@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useActionState } from 'react';
 import { toast } from 'react-toastify';
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import { ErrorLabel } from '@/components/atoms/error-label';
 import { PhoneInputFormField } from '@/components/molecules/phone-input-fom-field';
 import { TextInputFormField } from '@/components/molecules/text-input-form-field';

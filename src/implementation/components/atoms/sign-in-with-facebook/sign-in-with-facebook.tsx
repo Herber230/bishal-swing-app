@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/button';
+import { Button } from '@heroui/button';
 import { FaFacebook } from 'react-icons/fa';
 import { SignInWithFacebookProps } from './sign-in-with-facebook.types';
 import { signIn } from '@/auth';

@@ -109,7 +109,7 @@ export const notifyAuthEventThroughWhatsapp = (
     }
 
     // Send the notification through WhatsApp api
-    // TODO - Probable an utility to handle fetch requests and convert them to Effect
+    // TODO - Probably add an utility to handle fetch requests and convert them to Effect
     yield* Effect.tryPromise({
       try: () =>
         performHttpRequest({
@@ -118,7 +118,15 @@ export const notifyAuthEventThroughWhatsapp = (
           link: notificationLink,
           authorizationToken,
         }),
-      catch: e => (e instanceof HttpError ? e : new FetchException(e)),
+      catch: e => {
+        // TODO - Remove console.error and use a proper logger
+        // Log the error and return the appropriate error type
+        console.error(
+          'Error while sending notification through WhatsApp. Link: ',
+          notificationLink,
+        );
+        return e instanceof HttpError ? e : new FetchException(e);
+      },
     });
 
     return;
