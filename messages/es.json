@@ -1,0 +1,69 @@
+{
+  "authentication": {
+    "confirmPassword": "Confirmar contraseña",
+    "createAccountQuestion": "¿Crear una cuenta?",
+    "externalAccount": "O usa una cuenta externa",
+    "firstName": "Nombre",
+    "forgotPassword": {
+      "badUrl": "URL incorrecta. El token no está presente",
+      "cta": "Enviar enlace para restablecer contraseña",
+      "infoHead": "Por favor, ingresa tu teléfono o nombre de usuario para restablecer tu contraseña",
+      "successFixedMessage": "Por favor, revisa tu WhatsApp para un enlace de restablecimiento de contraseña",
+      "successNotification": "Enlace para restablecer contraseña enviado con éxito"
+    },
+    "forgotPasswordQuestion": "¿Olvidaste tu contraseña?",
+    "lastName": "Apellido",
+    "newPassword": "Nueva contraseña",
+    "notification": {
+      "accountAlreadyExists": "La cuenta ya existe",
+      "accountAlreadyVerified": "La cuenta ya está verificada",
+      "accountNotFound": "Cuenta no encontrada",
+      "confirmPasswordRequired": "Confirmar contraseña es obligatorio",
+      "firstNameRequired": "El nombre es obligatorio",
+      "forgotPasswordFailed": "Error al restablecer la contraseña",
+      "forgotPasswordSuccessful": "Contraseña restablecida con éxito",
+      "invalidCredentials": "Credenciales inválidas. Por favor, inténtalo de nuevo.",
+      "lastNameRequired": "El apellido es obligatorio",
+      "logInFailed": "Error al iniciar sesión",
+      "logInSuccessful": "Inicio de sesión exitoso",
+      "newAccountCreationFailed": "Error al crear una nueva cuenta",
+      "passwordInvalid": "La contraseña debe contener al menos una letra, un número y un carácter especial",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordsDoNotMatch": "Las contraseñas no coinciden",
+      "passwordTooLong": "La contraseña debe tener como máximo 20 caracteres",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+      "phoneNumberRequired": "El número de teléfono es obligatorio",
+      "phoneNumberTooShort": "El número de teléfono debe tener al menos 8 caracteres",
+      "resetPasswordFailed": "Error al restablecer la contraseña",
+      "unknownError": "Error desconocido. Por favor, inténtalo de nuevo más tarde.",
+      "userNameRequired": "El nombre de usuario es obligatorio",
+      "userNameTooShort": "El nombre de usuario debe tener al menos 3 caracteres"
+    },
+    "password": "Contraseña",
+    "resetPassword": {
+      "cta": "Restablecer contraseña",
+      "infoHead": "Por favor, ingresa tu nueva contraseña",
+      "successNotification": "Contraseña restablecida con éxito",
+      "tokenVerified": "Token de restablecimiento de contraseña verificado. Ahora puedes restablecer tu contraseña.",
+      "youCanNowSignIn": "Ahora puedes iniciar sesión con tu nueva contraseña"
+    },
+    "signIn": {
+      "cta": "Iniciar sesión",
+      "infoHead": "Por favor, ingresa tus datos para iniciar sesión"
+    },
+    "signUp": {
+      "cta": "Registrarse",
+      "infoHead": "Por favor, ingresa tus datos para crear una cuenta",
+      "newAccountCreatedVerificationPending": "Nueva cuenta creada con éxito. La verificación está pendiente.",
+      "successFixedMessage": "Por favor, revisa tu WhatsApp para un enlace de verificación",
+      "successNotification": "Cuenta creada con éxito"
+    },
+    "usePhone": "Usar teléfono",
+    "userName": "Nombre de usuario",
+    "verifyAccount": {
+      "invalidLink": "Enlace inválido, falta el token. Por favor, revisa el mensaje o intenta el proceso completo nuevamente.",
+      "successNotification": "Cuenta verificada con éxito",
+      "weAreVerifying": "Estamos verificando tu cuenta. Por favor, espera..."
+    }
+  }
+}

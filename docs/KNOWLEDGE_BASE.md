@@ -27,6 +27,7 @@ You can navigate through the document using the table of contents.
   - [Tailwind CSS](#tailwind-css)
   - [HeroUI](#heroui)
   - [Effect.js](#effectjs)
+  - [next-intl](#next-intl)
 - [Tools](#tools)
   - [Command Line Interface (CLI)](#command-line-interface-cli)
   - [Visual Studio Code](#visual-studio-code)
@@ -196,6 +197,14 @@ Some of the main Effect features include:
 - **Error Handling:** Handle errors in a structured and reliable manner using Effect’s built-in error handling capabilities.
 - **Asynchronicity:** Write code that looks the same, whether it is synchronous or asynchronous.
 - **Observability:** With full tracing capabilities, you can easily debug and monitor the execution of your Effect program.
+
+### next-intl
+
+<https://next-intl.dev/>
+
+next-intl is a library for internationalization (i18n) in Next.js applications. It provides a set of tools and utilities to help you build multilingual applications with ease.
+It is designed to work with Next.js and provides features like automatic language detection, server-side rendering, and static site generation. next-intl is a great tool to improve the development process and the final result of the code.
+It is important to mention that next-intl is not a translation library, it is a library that helps you build multilingual applications. You still need to provide the translations for your application, but next-intl provides the tools to help you manage the translations and use them in your application.
 
 ---
 

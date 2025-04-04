@@ -122,7 +122,7 @@ export const notifyAuthEventThroughWhatsapp = (
         // TODO - Remove console.error and use a proper logger
         // Log the error and return the appropriate error type
         console.error(
-          'Error while sending notification through WhatsApp. Link: ',
+          '[X] Error while sending notification through WhatsApp. Link: ',
           notificationLink,
         );
         return e instanceof HttpError ? e : new FetchException(e);

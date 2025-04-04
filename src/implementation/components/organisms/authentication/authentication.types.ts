@@ -13,4 +13,5 @@ export interface AuthenticationProps {
   state: AuthenticationState;
   className?: string;
   serverAction: ServerAction;
+  ns?: string;
 }

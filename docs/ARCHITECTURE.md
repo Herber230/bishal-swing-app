@@ -50,10 +50,12 @@ This is the main directory structure of the project:
     ├── .vscode
     ├── app/
     │   ├── api
-    │   ├── auth
-    │   └── home
+    │   └── [locale]
+    │       ├── auth
+    │       └── home
     ├── coverage
     ├── docs
+    ├── messages
     ├── node_modules
     ├── public
     └── src/
@@ -75,6 +77,7 @@ Not all the files are shown in this structure, only the most important ones. Bel
 - `app`: Contains the pages of the application. This is for the Next.js framework and it contains the implementation of the pages.
 - `coverage`: Contains the coverage reports. This is for the Jest testing framework and it is updated automatically.
 - `docs`: Contains the documentation files. This is for the project documentation.
+- `messages`: Contains the messages files. This is for the i18n configuration to support multiple languages.
 - `node_modules`: Contains the Node.js modules. This is for the Node.js framework and it is updated automatically.
 - `public`: Contains the public files. This is for the public files of the application.
 - `src`: Contains the source code of the application. Here is the main place of the development work.

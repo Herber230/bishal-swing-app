@@ -15,7 +15,7 @@ import { AuthError, User } from 'next-auth';
 
 export class BSCredentialsProviderError extends AuthError {
   public readonly kind = 'CredentialsSignin';
-  public readonly friendlyMessage = 'Invalid Credentials. Please try again.';
+  public readonly friendlyMessageKey = 'invalidCredentials';
 
   constructor() {
     super('Invalid credentials for Bishal Swing Credentials provider');
