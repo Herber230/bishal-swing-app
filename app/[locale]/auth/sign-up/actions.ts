@@ -22,7 +22,7 @@ import { CreateAuthenticationEventTag } from '@/repositories/create-authenticati
 import { NotifyAuthenticationEventTag } from '@/repositories/notify-authentication-event';
 import { CommonBusinessUtilsTag } from '@/repositories/common-business-repository';
 import { ImplementationConfigTag } from '@/repositories/implementation-config-repository';
-import { envConfig } from '@/server-context/env-config';
+import { envConfig } from '@/server-config';
 import {
   getServerTranslations,
   TranslationsHelper,

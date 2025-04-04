@@ -33,6 +33,17 @@ jobs:
           allow-install: 'false'
 
       - name: Run Validation
+        # This environment is required for the validation step.
+        # It contains only placeholder values. Check .env.example for the required variables.
+        env:
+          SELF_DOMAIN: http://localhost:3000
+          AUTH_SECRET: some.auth.secret.value
+          AUTH_GOOGLE_ID: some.google.id.value
+          AUTH_GOOGLE_SECRET: some.google.secret.value
+          MONGO_CONNECTION_URI: mongodb://mongo-srv-url
+          BISHAL_SWING_DB: some.bishal.db.value
+          WHATSAPP_SENDER_PHONE_NUMBER_ID: 123456789
+          WHATSAPP_AUTHORIZATION_TOKEN: some.token.value
         run: |
           pnpm run validate
 

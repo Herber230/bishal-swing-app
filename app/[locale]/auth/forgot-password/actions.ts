@@ -11,7 +11,7 @@ import {
 } from '@/repositories/forgot-password-repository';
 import { forgotPasswordUC } from '@/use-cases/forgot-password';
 import { ImplementationConfigTag } from '@/repositories/implementation-config-repository';
-import { envConfig } from '@/server-context/env-config';
+import { envConfig } from '@/server-config';
 import { formDataToPlainObject } from '@/utils/form/form-data-to-plain-object';
 import { FindUserByAccountTag } from '@/repositories/find-user-by-account-repository';
 import { findUserByAccountInMongo } from '@/impl-mongodb/adapters/find-user-by-account';

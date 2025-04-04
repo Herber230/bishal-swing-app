@@ -19,15 +19,16 @@
       }
     ],
     "paths": {
-      "@/auth": ["./src/context/auth"],
+      "@/auth": ["./server/auth"],
       "@/components/*": ["./src/implementation/components/*"],
       "@/entities/*": ["./src/business/entities/*"],
-      "@/i18n/*": ["./src/context/i18n/*"],
+      "@/i18n/*": ["./server/i18n/*"],
       "@/impl-common/*": ["./src/implementation/common/*"],
       "@/impl-mongodb/*": ["./src/implementation/mongodb/*"],
       "@/impl-whatsapp-api/*": ["./src/implementation/whatsapp-api/*"],
       "@/repositories/*": ["./src/business/repositories/*"],
-      "@/server-context/*": ["./src/context/server/*"],
+      "@/server-config": ["./server/env-config.ts"],
+      "@/server-context/*": ["./server/context/*"],
       "@/use-cases/*": ["./src/business/use-cases/*"],
       "@/utils/*": ["./src/utils/*"]
     }

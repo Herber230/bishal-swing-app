@@ -1,6 +1,6 @@
-import type { ServerContext } from './server-context.types';
+import type { ServerContext } from './types';
 import { createMongoDbConnectionApi } from '@/impl-mongodb/connection-api';
-import { envConfig } from './env-config';
+import { envConfig } from '@/server-config';
 
 // Initialize the MongoDB connection
 const mongoConnectionApi = createMongoDbConnectionApi(envConfig);

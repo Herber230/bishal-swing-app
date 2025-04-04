@@ -7,7 +7,7 @@ import {
   SignInWithCredentialsInputTag,
 } from '@/repositories/sign-in-with-credentials-repository';
 import { ImplementationConfigTag } from '@/repositories/implementation-config-repository';
-import { envConfig } from '../server/env-config';
+import { envConfig } from '@/server-config';
 import { FindUserByAccountTag } from '@/repositories/find-user-by-account-repository';
 import { CommonBusinessUtilsTag } from '@/repositories/common-business-repository';
 import { commonBusiness } from '@/impl-common/business-utils';

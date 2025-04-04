@@ -7,8 +7,8 @@ declare global {
   function getServerContextInstance(): ServerContext;
 
   type PageProps = {
-    params: Record<string, string>;
-    searchParams: Record<string | string[], string | undefined>;
+    params: Promise<Record<string, string>>;
+    searchParams: Promise<Record<string | string[], string | undefined>>;
   };
 }
 

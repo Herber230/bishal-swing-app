@@ -10,7 +10,8 @@ export function VerifyToken({ token }: { token: string }): JSX.Element {
 
   useEffect(() => {
     performVerificationFromServer(token).then(result => {
-      showToast(result.success ? 'success' : 'error', result.message);
+      if (result.message)
+        showToast(result.success ? 'success' : 'error', result.message);
       if (result.success) router.push('/auth/sign-in');
     });
   }, [router, token]);
