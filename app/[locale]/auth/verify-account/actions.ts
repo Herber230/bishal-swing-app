@@ -5,7 +5,7 @@ import { ServerActionResult } from '@/utils/next/types';
 
 import { verifyAccountWithTokenUC } from '@/use-cases/verify-account-with-token';
 import { ImplementationConfigTag } from '@/repositories/implementation-config-repository';
-import { envConfig } from '@/server-context/env-config';
+import { envConfig } from '@/server-config';
 import { VerifyAccountWithTokenInputTag } from '@/repositories/verify-account-with-token-repository';
 import { FindAuthEventTag } from '@/repositories/find-auth-event-repository';
 import { findAuthEventInMongo } from '@/impl-mongodb/adapters/find-auth-event';

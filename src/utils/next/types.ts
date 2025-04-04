@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 export interface ServerActionResult {
   success: boolean;
-  message: string;
+  message?: string;
   errors: Record<string, string[]>;
 }
 

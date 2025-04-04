@@ -10,7 +10,7 @@
     "format:check": "prettier --check .",
     "test": "jest --passWithNoTests",
     "prepare": "husky",
-    "validate": "pnpm run format:check && pnpm run lint"
+    "validate": "pnpm run format:check && pnpm run lint && pnpm run build"
   },
   "dependencies": {
     "@heroui/button": "2.2.15",

@@ -17,7 +17,7 @@ import {
   VerifyForgotPasswordTokenInput,
   VerifyForgotPasswordTokenInputTag,
 } from '@/repositories/verify-forgot-password-token-repository';
-import { envConfig } from '@/server-context/env-config';
+import { envConfig } from '@/server-config';
 import { resetPasswordUC } from '@/use-cases/reset-password';
 import { verifyForgotPasswordTokenUC } from '@/use-cases/verify-forgot-password-token';
 import { serverActionError } from '@/utils/next/server-action-error';

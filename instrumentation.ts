@@ -1,5 +1,5 @@
 export async function register() {
   if (process.env.NEXT_RUNTIME === 'nodejs') {
-    await import('./src/context/server/register');
+    await import('./server/context/register');
   }
 }

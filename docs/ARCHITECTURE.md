@@ -8,6 +8,16 @@ There are many different types of architectural patterns, each with its own set 
 
 ## Table of Contents
 
+- [Architecture](#architecture)
+  - [Patterns](#patterns)
+    - [Hexagonal Architecture](#hexagonal-architecture)
+    - [Atomic Design](#atomic-design)
+    - [Composition Root](#composition-root)
+  - [Implementation](#implementation)
+    - [Directory Structure](#directory-structure)
+    - [Hexagonal Architecture Implementation](#hexagonal-architecture-implementation)
+    - [User Interface](#user-interface)
+
 ---
 
 ## Patterns
@@ -58,12 +68,15 @@ This is the main directory structure of the project:
     ├── messages
     ├── node_modules
     ├── public
+    ├── server
+    │   ├── auth
+    │   ├── context
+    │   └── i18n
     └── src/
         ├── business/
         │   ├── entities
         │   ├── repositories
         │   └── use-cases
-        ├── context
         ├── implementation
         └── utils
 ```

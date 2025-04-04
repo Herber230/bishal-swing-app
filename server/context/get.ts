@@ -1,6 +1,6 @@
 // TODO: Register globalThis types
 /* eslint-disable no-undef */
-import type { ServerContext } from './server-context.types';
+import type { ServerContext } from './types';
 
 export default function getServerContext(): ServerContext {
   // @ts-ignore

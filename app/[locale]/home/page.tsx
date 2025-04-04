@@ -37,7 +37,7 @@ export default async function Page() {
         <Divider className="border-black" />
         {session && (
           <div className="flex flex-col justify-center items-center h-[400px]">
-            {`You're signed in as ${session.user.name || session.user.email}`}
+            {`You're signed in as ${session.user.firstName && session.user.lastName ? `${session.user.firstName} ${session.user.lastName}` : session.user.name}`}
             <form
               action={async () => {
                 'use server';
