@@ -26,6 +26,7 @@
     "mongodb": "6.8.0",
     "next": "15.1.7",
     "next-auth": "5.0.0-beta.25",
+    "next-intl": "3.26.5",
     "rambda": "9.2.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",

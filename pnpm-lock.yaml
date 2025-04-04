@@ -50,6 +50,9 @@ importers:
       next-auth:
         specifier: 5.0.0-beta.25
         version: 5.0.0-beta.25(next@15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      next-intl:
+        specifier: 3.26.5
+        version: 3.26.5(next@15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       rambda:
         specifier: 9.2.1
         version: 9.2.1
@@ -665,6 +668,12 @@ packages:
     resolution:
       {
         integrity: sha512-N/LIdTvVc1TpJmMt2jVg0Fr1F7Q1qJPdZSCs19unMskCmVQ/sa0H9L8PWt13vq+gLdLg1+pPsvBLydL1Apahjg==,
+      }
+
+  '@formatjs/intl-localematcher@0.5.10':
+    resolution:
+      {
+        integrity: sha512-af3qATX+m4Rnd9+wHcjJ4w2ijq+rAVP3CCinJQvFv1kgSu1W6jypUmvleJxcewdxmutM8dmIRZFxO/IQBZmP2Q==,
       }
 
   '@formatjs/intl-localematcher@0.6.0':
@@ -5246,6 +5255,13 @@ packages:
         integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==,
       }
 
+  negotiator@1.0.0:
+    resolution:
+      {
+        integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==,
+      }
+    engines: { node: '>= 0.6' }
+
   next-auth@5.0.0-beta.25:
     resolution:
       {
@@ -5264,6 +5280,15 @@ packages:
         optional: true
       nodemailer:
         optional: true
+
+  next-intl@3.26.5:
+    resolution:
+      {
+        integrity: sha512-EQlCIfY0jOhRldiFxwSXG+ImwkQtDEfQeSOEQp6ieAGSLWGlgjdb/Ck/O7wMfC430ZHGeUKVKax8KGusTPKCgg==,
+      }
+    peerDependencies:
+      next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
 
   next@15.1.7:
     resolution:
@@ -6704,6 +6729,14 @@ packages:
       '@types/react':
         optional: true
 
+  use-intl@3.26.5:
+    resolution:
+      {
+        integrity: sha512-OdsJnC/znPvHCHLQH/duvQNXnP1w0hPfS+tkSi3mAbfjYBGh4JnyfdwkQBfIVf7t8gs9eSX/CntxUMvtKdG2MQ==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0
+
   use-isomorphic-layout-effect@1.2.0:
     resolution:
       {
@@ -7380,6 +7413,10 @@ snapshots:
   '@formatjs/icu-skeleton-parser@1.8.13':
     dependencies:
       '@formatjs/ecma402-abstract': 2.3.3
+      tslib: 2.8.1
+
+  '@formatjs/intl-localematcher@0.5.10':
+    dependencies:
       tslib: 2.8.1
 
   '@formatjs/intl-localematcher@0.6.0':
@@ -10691,11 +10728,21 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
+  negotiator@1.0.0: {}
+
   next-auth@5.0.0-beta.25(next@15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
     dependencies:
       '@auth/core': 0.37.2
       next: 15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
+
+  next-intl@3.26.5(next@15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@formatjs/intl-localematcher': 0.5.10
+      negotiator: 1.0.0
+      next: 15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
+      use-intl: 3.26.5(react@19.0.0)
 
   next@15.1.7(@babel/core@7.26.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
@@ -11594,6 +11641,12 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@types/react': 19.0.8
+
+  use-intl@3.26.5(react@19.0.0):
+    dependencies:
+      '@formatjs/fast-memoize': 2.2.6
+      intl-messageformat: 10.7.15
+      react: 19.0.0
 
   use-isomorphic-layout-effect@1.2.0(@types/react@19.0.8)(react@19.0.0):
     dependencies:

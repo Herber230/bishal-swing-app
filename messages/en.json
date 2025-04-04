@@ -1,0 +1,69 @@
+{
+  "authentication": {
+    "confirmPassword": "Confirm Password",
+    "createAccountQuestion": "Create an account?",
+    "externalAccount": "Or use an external account",
+    "firstName": "First Name",
+    "forgotPassword": {
+      "badUrl": "Bad url. Token is not present",
+      "cta": "Send Reset Password Link",
+      "infoHead": "Please enter your phone or username to reset your password",
+      "successFixedMessage": "Please check your whatsapp for a reset password link",
+      "successNotification": "Reset password link sent successfully"
+    },
+    "forgotPasswordQuestion": "Forgot password?",
+    "lastName": "Last Name",
+    "newPassword": "New Password",
+    "notification": {
+      "accountAlreadyExists": "Account already exists",
+      "accountAlreadyVerified": "Account already verified",
+      "accountNotFound": "Account not found",
+      "confirmPasswordRequired": "Confirm password is required",
+      "firstNameRequired": "First name is required",
+      "forgotPasswordFailed": "Forgot password failed",
+      "forgotPasswordSuccessful": "Forgot password successful",
+      "invalidCredentials": "Invalid Credentials. Please try again.",
+      "lastNameRequired": "Last name is required",
+      "logInFailed": "Log in failed",
+      "logInSuccessful": "Log in successful",
+      "newAccountCreationFailed": "New account creation failed",
+      "passwordInvalid": "Password must contain at least one letter, one number and one special character",
+      "passwordRequired": "Password is required",
+      "passwordsDoNotMatch": "Passwords do not match",
+      "passwordTooLong": "Password must be at most 20 characters long",
+      "passwordTooShort": "Password must be at least 6 characters long",
+      "phoneNumberRequired": "Phone number is required",
+      "phoneNumberTooShort": "Phone number must be at least 8 characters long",
+      "resetPasswordFailed": "Reset password failed",
+      "unknownError": "Unknown Error. Please try again later.",
+      "userNameRequired": "User name is required",
+      "userNameTooShort": "User name must be at least 3 characters long"
+    },
+    "password": "Password",
+    "resetPassword": {
+      "cta": "Reset Password",
+      "infoHead": "Please enter your new password",
+      "successNotification": "Password reset successfully",
+      "tokenVerified": "Forgot password token verified. You can now reset your password.",
+      "youCanNowSignIn": "You can now sign in with your new password"
+    },
+    "signIn": {
+      "cta": "Log in",
+      "infoHead": "Please enter your details to log in"
+    },
+    "signUp": {
+      "cta": "Sign Up",
+      "infoHead": "Please enter your details to create an account",
+      "newAccountCreatedVerificationPending": "New account created successfully. Verification is pending.",
+      "successFixedMessage": "Please check your whatsapp for a verification link",
+      "successNotification": "Account created successfully"
+    },
+    "usePhone": "Use Phone",
+    "userName": "User Name",
+    "verifyAccount": {
+      "invalidLink": "Invalid link, the token is missing. Please check the message or try the complete process again.",
+      "successNotification": "Account verified successfully",
+      "weAreVerifying": "We are verifying your account. Please wait..."
+    }
+  }
+}

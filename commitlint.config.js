@@ -1,4 +1,4 @@
-const scope = ['auth', 'home', 'docs', 'cicd', 'deps'];
+const scope = ['docs', 'cicd', 'deps', 'core', 'auth', 'home'];
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],

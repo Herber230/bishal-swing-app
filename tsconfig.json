@@ -22,6 +22,7 @@
       "@/auth": ["./src/context/auth"],
       "@/components/*": ["./src/implementation/components/*"],
       "@/entities/*": ["./src/business/entities/*"],
+      "@/i18n/*": ["./src/context/i18n/*"],
       "@/impl-common/*": ["./src/implementation/common/*"],
       "@/impl-mongodb/*": ["./src/implementation/mongodb/*"],
       "@/impl-whatsapp-api/*": ["./src/implementation/whatsapp-api/*"],
