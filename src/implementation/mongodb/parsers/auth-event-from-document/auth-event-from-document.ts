@@ -1,5 +1,5 @@
 import { Document } from 'mongodb';
-import { applySpec, pipe, prop, toString } from 'rambda';
+import { applySpec, pipe, prop, toString } from 'ramda';
 import { AuthenticationEvent } from '@/entities/authentication-event';
 
 export const authEventFromDocument: (
@@ -8,7 +8,7 @@ export const authEventFromDocument: (
   document: Document,
 ) => AuthenticationEvent = applySpec({
   id: pipe(prop('_id'), toString),
-  userId: pipe(prop('userId'), toString),
+  userId: prop('userId'),
   createdAt: prop('createdAt'),
   type: prop('type'),
   data: prop('data'),

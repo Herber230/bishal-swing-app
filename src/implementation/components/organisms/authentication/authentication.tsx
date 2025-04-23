@@ -33,19 +33,23 @@ export function Authentication({
   useFormSuccess(
     formState.success,
     stateWording('successNotification') &&
-      t(stateWording('successNotification')),
+      t(stateWording('successNotification') as string),
     successRedirect[state],
   );
 
   if (formState.success && stateWording('successFixedMessage'))
     return (
-      <p className="text-center">{t(stateWording('successFixedMessage'))}</p>
+      <p className="text-center">
+        {t(stateWording('successFixedMessage') as string)}
+      </p>
     );
 
   return (
     <form className="flex flex-col" action={formAction}>
       {stateWording('infoHead') && (
-        <p className="text-center mb-5">{t(stateWording('infoHead'))}</p>
+        <p className="text-center mb-5">
+          {t(stateWording('infoHead') as string)}
+        </p>
       )}
       {fieldsToRender.includes('userName') && !usingPhone && (
         <TextInputFormField
@@ -96,7 +100,7 @@ export function Authentication({
         />
       )}
       <Button className="mt-5" color="primary" type="submit">
-        {t(stateWording('cta'))}
+        {t(stateWording('cta') as string)}
       </Button>
       <ErrorLabel className="mt-1" error={formState.errors.submit} />
     </form>

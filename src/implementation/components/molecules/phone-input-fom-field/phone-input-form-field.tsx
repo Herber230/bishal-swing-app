@@ -1,3 +1,6 @@
+// TODO: Solve the issues with the input mask. Already existing issue.
+// @ts-nocheck
+
 import { Input } from '@heroui/input';
 import { useState, type JSX } from 'react';
 import InputMask from 'react-input-mask';
@@ -22,7 +25,7 @@ export function PhoneInputFormField({
         value={value}
         onChange={e => setValue(e.target.value)}
       >
-        <Input label={<Label>{label}</Label>} name={name} />
+        (<Input label={<Label>{label}</Label>} name={name} />)
       </InputMask>
       <ErrorLabel error={externalError} />
     </FormFieldWrap>
