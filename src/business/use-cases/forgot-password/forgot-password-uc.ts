@@ -67,8 +67,6 @@ export const forgotPasswordUC = Effect.gen(function* () {
     },
   });
 
-  console.log(`Token: ${token}`);
-
   yield* notifyAuthEvent(authEvent);
 
   return;

@@ -8,9 +8,7 @@ export function SimplePageTemplate({
   return (
     <div className="flex flex-col min-h-screen">
       {header}
-      <main className="flex-grow flex items-center justify-center">
-        {children}
-      </main>
+      <main className="grow flex items-center justify-center">{children}</main>
       {footer}
     </div>
   );

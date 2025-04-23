@@ -1,14 +1,15 @@
 import type { Document } from 'mongodb';
 import type { User } from '@/entities/user';
-import { applySpec, forEach, pipe, prop, toString } from 'rambda';
+import type { UserAccount } from '@/entities/user-account';
+import { applySpec, forEach, pipe, prop, toString } from 'ramda';
 
 const parseDocument = applySpec<User>({
   id: pipe(prop('_id'), toString),
   name: prop('name'),
   accounts: pipe(
-    prop('accounts'),
+    doc => (Array.isArray(doc.accounts) ? doc.accounts : []),
     forEach(
-      applySpec({
+      applySpec<UserAccount>({
         type: prop('type'),
         identifier: prop('identifier'),
         details: prop('details'),
