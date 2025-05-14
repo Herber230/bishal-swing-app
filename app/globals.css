@@ -1,4 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/brixton');
 @import 'tailwindcss';
 @plugin './hero.ts';
 @source '../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* COLORS =============================== */
+  /* Monza */
+  --color-primary: #dd0000;
+  /* Monza Hover */
+  --color-primary-light: #ef3c3c;
+  /* Cod Gray */
+  --color-secondary: #161616;
+  /* Cod Gray Hover */
+  --color-secondary-light: #404040;
+  /* Platinum */
+  --color-neutral: #e9e9e9;
+  /* Raising Black */
+  --color-neutral-100: #272727;
+  /* Onyx */
+  --color-neutral-200: #3c3c3c;
+  /* Davy's Gray */
+  --color-neutral-300: #525252;
+  /* Dim Gray */
+  --color-neutral-400: #686868;
+  /* Gray */
+  --color-neutral-500: #7d7d7d;
+  /* Battleship Gray */
+  --color-neutral-600: #939393;
+  /* Silver */
+  --color-neutral-700: #a8a8a8;
+  /* French Gray */
+  --color-neutral-800: #bebebe;
+  /* Quill Gray */
+  --color-neutral-900: #d4d4d4;
+  /* Black */
+  --color-black: #000000;
+  /* White */
+  --color-white: #ffffff;
+  /* ====================================== */
+
+  /* SPACING ============================== */
+  --spacing-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+  --spacing-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+  --spacing-xs: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
+  --spacing-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --spacing-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+  --spacing-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+  --spacing-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+  --spacing-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+  --spacing-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
+  /* ====================================== */
+
+  /* TYPOGRAPHY =========================== */
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Brixton', sans-serif;
+  --text-xs: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+  --text-sm: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+  --text-base: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+  --text-lg: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+  --text-xl: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+  --text-2xl: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
+  --text-3xl: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
+  --text-4xl: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
+  --text-5xl: clamp(3.3592rem, 2.8691rem + 2.4507vw, 4.7684rem);
+  --text-6xl: clamp(4.0311rem, 3.36rem + 3.3555vw, 5.9605rem);
+  --text-7xl: clamp(4.8373rem, 3.9283rem + 4.5448vw, 7.4506rem);
+  --text-8xl: clamp(5.8048rem, 4.5844rem + 6.1017vw, 9.3132rem);
+  --text-9xl: clamp(6.9657rem, 5.3393rem + 8.1319vw, 11.6415rem);
+  /* ====================================== */
+
+  /* SHADOWS ============================== */
+  /* TODO: Define the complete shadows set */
+  --shadow-main: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+  /* ====================================== */
+}
