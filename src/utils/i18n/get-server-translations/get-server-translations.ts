@@ -2,12 +2,14 @@ import { getMessages } from 'next-intl/server';
 import type { GetServerTranslations } from './get-server-translations.types';
 import { AbstractIntlMessages } from 'next-intl';
 
-export const getServerTranslations: GetServerTranslations = async () => {
+export const getServerTranslations: GetServerTranslations = async params => {
+  const { ns } = params || {};
   const messages = await getMessages();
 
   return {
     t: key => {
-      const possibleValue = key.split('.').reduce(
+      const completeKey = ns ? `${ns}.${key}` : key;
+      const possibleValue = completeKey.split('.').reduce(
         (acc, part) => {
           if (acc && typeof acc === 'object') {
             return acc[part];
@@ -21,10 +23,8 @@ export const getServerTranslations: GetServerTranslations = async () => {
         return possibleValue;
       }
 
-      if (key.includes('userName')) console.log('[>>>] username: ', messages);
-
       throw new Error(
-        `Key [${key}] not found as a valid string in translations`,
+        `Key [${completeKey}] not found as a valid string in translations`,
       );
     },
   };

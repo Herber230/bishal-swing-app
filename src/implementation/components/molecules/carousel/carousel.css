@@ -1,0 +1,32 @@
+.carousel {
+  position: relative;
+
+  .current {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .next {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.carousel.transition {
+  /* Match carousel animation css variable to the one in the component */
+  --transition-duration: 2s;
+
+  .current {
+    opacity: 0;
+    transition: opacity var(--transition-duration) ease-in-out;
+  }
+
+  .next {
+    opacity: 1;
+    transition: opacity var(--transition-duration) ease-in-out;
+  }
+}
