@@ -65,5 +65,18 @@
       "successNotification": "Cuenta verificada con éxito",
       "weAreVerifying": "Estamos verificando tu cuenta. Por favor, espera..."
     }
+  },
+  "home": {
+    "hero": {
+      "discoverYourPassion": "Descubre tu pasión por el ritmo",
+      "in": "en",
+      "bishalSwing": "Bishal Swing",
+      "becomePartOfOurFamily": "Conviértete en parte de nuestra familia y descubre por qué somos la academia de referencia en Xela.",
+      "scheduleYourClass": "Agenda tu clase de prueba",
+      "free": "gratis",
+      "today": "hoy",
+      "iAmInterested": "¡Estoy interesado!",
+      "slogan": "Anda, ven y muévete"
+    }
   }
 }

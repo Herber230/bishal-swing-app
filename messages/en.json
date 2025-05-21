@@ -65,5 +65,18 @@
       "successNotification": "Account verified successfully",
       "weAreVerifying": "We are verifying your account. Please wait..."
     }
+  },
+  "home": {
+    "hero": {
+      "discoverYourPassion": "Discover your passion for rhythm",
+      "in": "in",
+      "bishalSwing": "Bishal Swing",
+      "becomePartOfOurFamily": "Become part of our family and discover why we are the leading academy in Xela.",
+      "scheduleYourClass": "Schedule your trial class",
+      "free": "free",
+      "today": "today",
+      "iAmInterested": "I'm interested!",
+      "slogan": "Come on, come and move"
+    }
   }
 }

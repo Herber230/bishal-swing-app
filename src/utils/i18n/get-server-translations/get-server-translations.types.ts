@@ -4,6 +4,12 @@ export interface TranslationsHelper {
   (key: string): string;
 }
 
+export interface GetServerTranslationsParams {
+  ns?: string;
+}
+
 export interface GetServerTranslations {
-  (): Promise<{ t: TranslationsHelper }>;
+  // TODO: Remove this false positive eslint failure
+  // eslint-disable-next-line no-unused-vars
+  (params?: GetServerTranslationsParams): Promise<{ t: TranslationsHelper }>;
 }
