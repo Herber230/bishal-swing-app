@@ -1,0 +1,176 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch PR Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Environment Initialization
+        uses: ./.github/composite-actions/env-initialization
+
+  validate:
+    runs-on: ubuntu-latest
+    needs: [setup-cache]
+    steps:
+      - name: Fetch PR Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Environment Initialization with no install
+        uses: ./.github/composite-actions/env-initialization
+        with:
+          allow-install: 'false'
+
+      - name: Run Validation
+        # This environment is required for the validation step.
+        # It contains only placeholder values. Check .env.example for the required variables.
+        env:
+          SELF_DOMAIN: http://localhost:3000
+          AUTH_SECRET: some.auth.secret.value
+          AUTH_GOOGLE_ID: some.google.id.value
+          AUTH_GOOGLE_SECRET: some.google.secret.value
+          MONGO_CONNECTION_URI: mongodb://mongo-srv-url
+          BISHAL_SWING_DB: some.bishal.db.value
+          WHATSAPP_SENDER_PHONE_NUMBER_ID: 123456789
+          WHATSAPP_AUTHORIZATION_TOKEN: some.token.value
+        run: |
+          pnpm run validate
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [setup-cache]
+    steps:
+      - name: Fetch PR Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Environment Initialization with no install
+        uses: ./.github/composite-actions/env-initialization
+        with:
+          allow-install: 'false'
+
+      - name: Run Tests
+        run: |
+          pnpm run test
+
+  build-and-deploy:
+    environment: Production
+    runs-on: ubuntu-latest
+    needs: [setup-cache, validate, test]
+    steps:
+      - name: Fetch PR Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Environment Initialization with no install
+        uses: ./.github/composite-actions/env-initialization
+        with:
+          allow-install: 'false'
+
+      - name: Build the application
+        env:
+          SELF_DOMAIN: http://localhost:3000
+          AUTH_SECRET: some.auth.secret.value
+          AUTH_GOOGLE_ID: some.google.id.value
+          AUTH_GOOGLE_SECRET: some.google.secret.value
+          MONGO_CONNECTION_URI: mongodb://mongo-srv-url
+          BISHAL_SWING_DB: some.bishal.db.value
+          WHATSAPP_SENDER_PHONE_NUMBER_ID: 123456789
+          WHATSAPP_AUTHORIZATION_TOKEN: some.token.value
+        run: |
+          pnpm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          mask-password: 'true'
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          REPOSITORY: bishal-swing/bishal-swing-app
+        run: |
+          # Build a docker container and
+          # push it to ECR so that it can
+          # be deployed to ECS.
+          docker build -t $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG
+          echo "image=$ECR_REGISTRY/$REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Create Task Definition file
+        env:
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          IMAGE_TAG: ${{ github.sha }}
+          SELF_DOMAIN: ${{ vars.SELF_DOMAIN }}
+          AUTH_GOOGLE_ID: ${{ secrets.AUTH_GOOGLE_ID }}
+          WHATSAPP_AUTHORIZATION_TOKEN: ${{ secrets.WHATSAPP_AUTHORIZATION_TOKEN }}
+          AUTH_GOOGLE_SECRET: ${{ secrets.AUTH_GOOGLE_SECRET }}
+          MONGO_CONNECTION_URI: ${{ secrets.MONGO_CONNECTION_URI }}
+          BISHAL_SWING_DB: ${{ secrets.BISHAL_SWING_DB }}
+          WHATSAPP_SENDER_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_SENDER_PHONE_NUMBER_ID }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+        run: |
+          pnpm run create-task-def-file
+
+      - name: Fill in the new image ID in the Task Definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: aws/task-definition.json
+          container-name: bishal-swing-app
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy Task Definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: bishal-swing-app-service
+          cluster: bishal-swing-cluster
+          wait-for-service-stability: true
+
+  finish:
+    runs-on: ubuntu-latest
+    needs: [setup-cache, validate, test, build-and-deploy]
+    if: always()
+    steps:
+      - name: Check for failures on preparation steps
+        if: ${{ needs.setup-cache.result == 'failure' ||  needs.validate.result == 'failure' || needs.test.result == 'failure' }}
+        run: |
+          echo "Failure on preparation checks"
+          exit 1
+
+      - name: Check for failures on deployment
+        if: ${{  needs.build-and-deploy.result == 'failure' }}
+        run: |
+          echo "Failure on deployment"
+          exit 1
+
+      - name: Notify Success
+        if: ${{  needs.build-and-deploy.result == 'success' }}
+        run: |
+          echo "Deployment successful!"
