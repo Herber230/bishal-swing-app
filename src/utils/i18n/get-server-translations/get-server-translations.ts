@@ -1,6 +1,6 @@
 import { getMessages } from 'next-intl/server';
 import type { GetServerTranslations } from './get-server-translations.types';
-import { AbstractIntlMessages } from 'next-intl';
+import type { AbstractIntlMessages } from 'next-intl';
 
 export const getServerTranslations: GetServerTranslations = async params => {
   const { ns } = params || {};
